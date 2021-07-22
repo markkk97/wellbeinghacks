@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <!-- Imporant meta information to make the page as rigid as possible on mobiles, to avoid unintentional zooming on the page itself  -->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Character Tutorial</title>
+    <link href="../bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../view/base.css" />
+    
+</head>
+<body>
+    
+
+    <div class="container ">
+        <div class="row">
+            <div class="col-7  home-banner p-5">
+                <div class="mb-3 mb-lg-0 text-center text-lg-start ">
+                    <h1 class="display-2 lh-1 mb-5">Well-Being Hacks</h1>
+                    <p class="lead mb-3">Quick & daily wellbeing exercises to integrate during your working day, 
+                        to feel more balanced, energised and relaxed.</p>
+                        <a class="butt" href="./list.html" >Start experience  <span>💪</span></a>               
+                    
+                </div>           
+            </div>
+            <div class="col-5 scene-container">
+                <div class="container-canvas">
+                    <!-- width="100" height="100" -->
+                     <!-- The loading element overlays all else until the model is loaded, at which point we remove this element from the DOM -->  
+                    <div class="loading" id="js-loader"><div class="loader"></div></div>
+   
+                    <canvas id="c"></canvas>
+                </div>
+                <!-- <div class="wrapper">
+                  
+                <canvas id="c"></canvas>
+                </div> -->
+                
+            </div>
+        </div>
+    </div>
+                                 
+  
+  
+
+
+</body>
+</html>
+
+<script src="../bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+<!-- The main Three.js file -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js'></script>
+
+<!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
+<script src='https://cdn.jsdelivr.net/gh/mrdoob/Three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
+<script type="module">
+
+import * as test from "../controller/hacksHome.js";
+try {
+    test.init();
+    test.update();
+    test.characterHome();
+} catch (error) {
+   console.error(error);
+   
+}
+
+ 
+
+</script>
