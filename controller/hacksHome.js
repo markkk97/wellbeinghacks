@@ -340,7 +340,9 @@ export var scene,
       exerciseElements = document.getElementById("exercise-element"),
       exerciseBenefits = document.getElementById("exercise-benefits"),
       exerciseStartDiv = document.getElementById("exercise-start"),  
-      hackToPLay = Cookies.get('hack-id'); 
+      hackToPLay = Cookies.get('hack-id'),
+      hackJson= "../model/exercises/"+hackToPLay+".json",
+      titleExercise = document.getElementById("title-exercise");
 
       //loader
       var loader = new THREE.GLTFLoader();
@@ -366,8 +368,12 @@ export var scene,
               var startAnim = THREE.AnimationClip.findByName(fileAnimations, 'idle');   
 
               
-             
-
+             //set title
+            $.getJSON(hackJson, function(data) {          
+              $("#title-exercise").html(data.title);
+            });
+              
+ 
               //start exercise, hide start button and reveal exercise
               // controllers and information(video)         
               starter.onclick = function () {                
@@ -376,7 +382,8 @@ export var scene,
                   //switch the start button with the video and controllers
                   
                     exerciseElements.style.display = "block";
-                    exerciseStartDiv.style.display = "none";   
+                    exerciseStartDiv.style.display = "none";  
+                     
                     //set video                 
                     vid.setAttribute("src", "../model/exercises/" + hackToPLay + ".mp4");
                     console.log(hackToPLay);
@@ -405,12 +412,6 @@ export var scene,
                 crossCrawlExerciseFlow(vid,startAnim, fileAnimations);
               }
 
-              
-            
-
-               
-             
-             
 
               //progreess bar
               vid.ontimeupdate = function(){
@@ -429,17 +430,37 @@ export var scene,
 
               //end of the video
               vid.onended = function(e) {
-                fadeToAction('victory',0.8,fileAnimations,mixer,THREE)
-                setTimeout(function(){
-             
-                  fadeToAction('happyIdle',0.8,fileAnimations,mixer,THREE);   
-                 
-                 },4000);
+
+                var endAnimations = ["victory","dance","jump"];
+                var endAnimation = endAnimations[getRandom(0, 2)];
+                console.log(getRandom(0, 2));
+
+                fadeToAction(endAnimation,0.8,fileAnimations,mixer,THREE)
+
+                if(endAnimation==="jump"){
+                  setTimeout(function(){             
+                    fadeToAction('happyIdle',0.8,fileAnimations,mixer,THREE);                    
+                   },1500);
+                }
+                else if(endAnimation==="dance"){
+                  setTimeout(function(){             
+                    fadeToAction('happyIdle',0.8,fileAnimations,mixer,THREE);                    
+                   },5000);
+                }
+                else{
+                  setTimeout(function(){             
+                    fadeToAction('happyIdle',0.8,fileAnimations,mixer,THREE);                    
+                   },4000);
+                }
+
+                
+
+
                 console.log("video ended");
                 exerciseElements.style.display = "none";
                 exerciseBenefits.style.display = "block";
 
-                $.getJSON("../model/exercises/"+hackToPLay+".json", function(data) {
+                $.getJSON(hackJson, function(data) {
                   var b1 = data.benefits.benefit1,
                   b2 = data.benefits.benefit2;
                   //document.getElementById("benefit-image-1").html("ciao");
@@ -517,9 +538,8 @@ export var scene,
            
         }
           
-     
 
-        if(vid.currentTime >= 53 && action3Played == false ) {          
+        if(vid.currentTime >= 53 && action2Played == false ) {          
           fadeToAction('arms',0.8,fileAnimations,mixer,THREE);
           action2Played = true;
          
@@ -597,13 +617,17 @@ export var scene,
             fadeToAction('crossCrawling',0.8,fileAnimations,mixer,THREE);
             action1Played = true;
         }
-        if(vid.currentTime >= 46 && action2Played == false ) {                    
-          fadeToAction('neck',0.8,fileAnimations,mixer,THREE);
-          action1Played = true;
+        if(vid.currentTime >= 43 && action2Played == false ) {                    
+          fadeToAction('arms',0.8,fileAnimations,mixer,THREE);
+          action2Played = true;
       }
             
       });
       
+    }
+
+    function getRandom(min, max) {
+      return Math.floor( Math.random() * (max - min + 1) + min);
     }
 
    export function update(){

@@ -17,14 +17,14 @@
  
 
     <div class="container">
-      <div class="sticky-header filter-banner">     
+      <!-- <div class="sticky-header filter-banner">     
         <h3 class="lh-1 mb-1">I wanna be..</h3>             
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <button type="button" class="btn btn-primary m-3">Balanced</button>
             <button type="button" class="btn btn-secondary m-3">Energised</button>
             <button type="button" class="btn btn-success m-3">Relaxed</button>
         </div>
-      </div>
+      </div> -->
       
         <div class="row hacklist"> 
 
@@ -150,19 +150,19 @@
   </script>
 
   <script>
-      $(window).scroll(function(){
-          var sticky = $('.sticky-header'),
-              scroll = $(window).scrollTop(),
-              container = $('.scene-container');
-            if (scroll >= 10) sticky.addClass('fixed');
-            else sticky.removeClass('fixed');
-      });
+      // $(window).scroll(function(){
+      //     var sticky = $('.sticky-header'),
+      //         scroll = $(window).scrollTop(),
+      //         container = $('.scene-container');
+      //       if (scroll >= 10) sticky.addClass('fixed');
+      //       else sticky.removeClass('fixed');
+      // });
 
 
-      $(".hack-element").on( "click", function() {
-        Cookies.set('prova', $(this).attr('id'));
-        console.log(Cookies.get('prova')); 
+      // $(".hack-element").on( "click", function() {
+      //   Cookies.set('prova', $(this).attr('id'));
+      //   console.log(Cookies.get('prova')); 
       
-      });
+      // });
    
   </script>
