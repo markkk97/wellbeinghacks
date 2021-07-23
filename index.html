@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -14,7 +14,7 @@
             renderer="logarithmicDepthBuffer: true;"
             embedded
             loading-screen="enabled: false;"
-            arjs="sourceType: webcam; debugUIEnabled: false;"
+            arjs="sourceType: webcam; debugUIEnabled: true;"
         >
             <a-assets>
                 <a-asset-item
@@ -29,10 +29,33 @@
                     gltf-model="#animated-asset"
                     scale="1 1 1"
                     gps-entity-place="latitude: 44.72205399833181; longitude: 7.90787985917632;"
-                    position="2 1 1"
+                    position="2 0 1"
                 ></a-entity>
 
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
     </body>
-</html>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>GeoAR.js demo</title>
+    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+</head>
+
+<body style='margin: 0; overflow: hidden;'>
+    <a-scene
+        vr-mode-ui="enabled: false"
+		embedded
+        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+
+        <a-entity gps-entity-place="latitude: 44.7221355; longitude: 7.9079743;" glb-model="assets/asset.glb" rotation="0 180 0" animation-mixer scale="0.15 0.15 0.15"/>
+        <a-camera gps-camera rotation-reader></a-camera>
+	</a-scene>
+</body>
