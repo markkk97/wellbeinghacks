@@ -7,9 +7,47 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
     </head>
+    <script>
+        window.onload = function () {
+          document
+            .querySelector(".say-hi-button")
+            .addEventListener("click", function () {
+              // here you can change also a-scene or a-entity properties, like
+              // changing your 3D model source, size, position and so on
+              // or you can just open links, trigger actions...
+              alert("Hi there!");
+            });
+        };
+      </script>
+      <style>
+        .buttons {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 5em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 10;
+        }
+    
+        .say-hi-button {
+          padding: 0.25em;
+          border-radius: 4px;
+          border: none;
+          background: white;
+          color: black;
+          width: 4em;
+          height: 2em;
+        }
+      </style>
 
     <body style="margin: 0; overflow: hidden;">
 
+        <div class="buttons">
+            <button class="say-hi-button"></button>
+          </div>
 
 
         <a-scene
@@ -21,10 +59,19 @@
             embedded
             gesture-detector
         >
+        <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+        <a-entity light="type: directional;
+                         castShadow: true;
+                         intensity: 0.4;
+                         shadowCameraVisible: true;"
+                  position="-5 3 1.5">
+        </a-entity>
+
             <a-assets>
                 <a-asset-item
                     id="animated-asset"
                     src="assets/asset.glb"
+                    shadow="cast: true"
                 ></a-asset-item>
             </a-assets>
 
@@ -38,8 +85,7 @@
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
             >
-            <a-entity light="type: directional; color: #EEE; intensity: 3" position="-1 1 0"></a-entity>
-            <a-entity light="type: ambient; color: #CCC; intensity: 10"></a-entity>
+          
                 <a-entity
                     id="bowser-model"
                     scale="1  1"
