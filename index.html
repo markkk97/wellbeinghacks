@@ -9,6 +9,13 @@
     </head>
 
     <body style="margin: 0; overflow: hidden;">
+
+        <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+            <button>
+         test button
+        </button>
+
+
         <a-scene
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
@@ -37,7 +44,7 @@
             >
                 <a-entity
                     id="bowser-model"
-                    scale="1 1 1"
+                    scale="1 2 1"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     class="clickable"
