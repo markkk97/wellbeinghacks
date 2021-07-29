@@ -16,6 +16,9 @@
 
                     // every click, we make our model grow in size :)
                     animatedMarker.addEventListener('click', function(ev, target){
+
+                        alert("clicked");
+
                         const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
                         if (aEntity && intersectedElement === aEntity) {
                             const scale = aEntity.getAttribute('scale');
@@ -104,7 +107,7 @@
                     gesture-handler
                 ></a-entity>
 
-                <a-text id="text" class="intersectable" scale="2 2 2" position="1 0 0" value="text" color="red"></a-text>  
+                <a-text id="text" class="intersectable" scale="2 2 2" position="1 0 0" value="ar1" color="red"></a-text>  
 
                 <a-box  scale="0.2  0.2" position='2 0.5 0' material='opacity: 0.5;'></a-box>
 
