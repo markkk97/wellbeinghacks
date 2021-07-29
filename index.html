@@ -1,4 +1,4 @@
-<!-- <!doctype html>
+<!doctype html>
 <html>
     <head>
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
@@ -8,15 +8,23 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
     </head>
     <script>
-        AFRAME.registerComponent('for_a_marker', {
-            init: function () {
-                var text = document.querySelector('#text');
-                text.addEventListener("click", function (evt) { //or you could do "mouseenter" [event](https://aframe.io/docs/0.9.0/components/cursor.html#events)
-                    alert("do your stuff");
-                });
-            }
-        });
-        </script>
+       AFRAME.registerComponent('markerhandler', {
+
+                init: function() {
+                    const animatedMarker = document.querySelector("#animated-marker");
+                    const aEntity = document.querySelector("#animated-asset");
+
+                    // every click, we make our model grow in size :)
+                    animatedMarker.addEventListener('click', function(ev, target){
+                        const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
+                        if (aEntity && intersectedElement === aEntity) {
+                            const scale = aEntity.getAttribute('scale');
+                            Object.keys(scale).forEach((key) => scale[key] = scale[key] + 1);
+                            aEntity.setAttribute('scale', scale);
+                        }
+                    });
+    }});
+    </script>
       <style>
         .buttons {
           position: absolute;
@@ -106,42 +114,4 @@
             <a-entity camera></a-entity>
         </a-scene>
     </body>
-</html> -->
-
-<!doctype HTML>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    </head>
-    <!-- <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script> -->
-
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-    
-    <!-- import events.js script -->
-    <script src="event.js"></script>
-    
-    <body style='margin : 0px; overflow: hidden;'>
-        <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
-        <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
-
-        <a-assets>
-            <a-asset-item id="animated-asset"  src="assets/asset.glb"></a-asset-item>
-        </a-assets>
-
-        <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='barcode' value='6' url="assets/marker.patt">
-            <a-entity
-                id="animated-model"
-                gltf-model="#animated-asset"
-                scale="2">
-            </a-entity>
-        </a-marker>
-
-        <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
-        <a-entity camera></a-entity>
-        </a-scene>
-    </body>
-</html>
+</html> 
