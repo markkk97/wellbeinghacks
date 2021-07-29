@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html>
     <head>
@@ -6,62 +8,35 @@
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+        <link href="bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="aFrameExtension/js/aframe-extras.js"></script>
+        <link rel="stylesheet" type="text/css" href="view/base.css" />
     </head>
-    <script>
-       AFRAME.registerComponent('markerhandler', {
-
-                init: function() {
-                    const animatedMarker = document.querySelector("#animated-marker");
-                    const aEntity = document.querySelector("#animated-asset");
-
-                    // every click, we make our model grow in size :)
-                    animatedMarker.addEventListener('click', function(ev, target){
-                        console.log("click");
-
-                        alert("clicked");
-
-                        const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-                        if (aEntity && intersectedElement === aEntity) {
-                            const scale = aEntity.getAttribute('scale');
-                            Object.keys(scale).forEach((key) => scale[key] = scale[key] + 1);
-                            aEntity.setAttribute('scale', scale);
-                        }
-                    });
-    }});
-    </script>
-      <style>
-        .buttons {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 5em;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 10;
-        }
     
-        .say-hi-button {
-          padding: 0.25em;
-          border-radius: 4px;
-          border: none;
-          background: white;
-          color: black;
-          width: 4em;
-          height: 2em;
-        }
-      </style>
 
-    <body style="margin: 0; overflow: hidden;">
+    <body style="margin: 0; overflow: hidden; background: none;">
 
-        <div class="buttons">
-            <button class="say-hi-button"></button>
-          </div>
+        
 
+        <audio controls id="exerciseAudio" controls >
+            <source src="assets/audio/crossCrawling.m4a">
+        </audio>
+
+
+        <div class="fixed-bottom container-fluid">  
+            <p>Your exercises</p>
+
+            <div class="scrolling-wrapper flex-nowrap mt-4 pb-4 pt-2"> 
+                      
+                <button id="meditate" class="butt-ar animation" type="button">One Minute Meditation </button>
+                <button id="jj" class="butt-ar animation" type="button"> Jumping Jacks </button> 
+                <button id="sideStretching" class="butt-ar animation" type="button"> sideStretching </button> 
+                <button id="crossCrawling" class="butt-ar animation" type="button"> Cross Crawl </button>
+            </div>
+        </div>
 
         <a-scene 
-            stats
+           
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
             renderer="logarithmicDepthBuffer: true;"
@@ -88,8 +63,7 @@
                 
             </a-assets>
 
-            <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='pattern'  preset="custom" url="assets/marker.patt" value='6'>
-                <!-- <a-marker
+            <a-marker
                 id="animated-marker"
                 type="pattern"
                 preset="custom"
@@ -98,23 +72,17 @@
                 emitevents="true"
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
-            > -->
-           
+            >
+            <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='barcode' value='6'></a-marker>
           
-            <a-entity
-            id="animated-model"
-            scale="1"
-            animation-mixer="loop: repeat"
-            gltf-model="#animated-asset"
-            
-        ></a-entity>
-
-               
-
-                <!-- <a-text id="text" class="intersectable" scale="2 2 2" position="1 0 0" value="ar1" color="red"></a-text>  
-
-                <a-box  scale="0.2  0.2" position='2 0.5 0' material='opacity: 0.5;'></a-box> -->
-
+                <a-entity
+                    id="bowser-model"
+                    scale="1 1 1"
+                    animation-mixer="clip: idle; loop: repeat;"
+                    gltf-model="#animated-asset"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>                    
                
             </a-marker>
 
@@ -122,3 +90,32 @@
         </a-scene>
     </body>
 </html> 
+
+<!-- jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<!-- cookies -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+<script>
+    $(".animation").click(function() {
+
+        var activeAnimation = "";
+        var character = document.querySelector("#bowser-model");  
+
+       
+        activeAnimation =  $(this).attr('id');
+        audio = document.querySelector("#exerciseAudio");
+
+        //Cookies.set('hack-id', activeAnimation);
+        console.log(activeAnimation);
+        
+        character.setAttribute("animation-mixer", {clip: activeAnimation})     
+        audio.setAttribute("src","assets/audio/"+activeAnimation+".m4a")
+        audio.play();
+        
+    });
+
+     
+  </script>
+
+
