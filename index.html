@@ -8,17 +8,15 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
     </head>
     <script>
-        window.onload = function () {
-          document
-            .querySelector(".say-hi-button")
-            .addEventListener("click", function () {
-              // here you can change also a-scene or a-entity properties, like
-              // changing your 3D model source, size, position and so on
-              // or you can just open links, trigger actions...
-              alert("Hi there!");
-            });
-        };
-      </script>
+        AFRAME.registerComponent('for_a_marker', {
+            init: function () {
+                var text = document.querySelector('#text');
+                text.addEventListener("click", function (evt) { //or you could do "mouseenter" [event](https://aframe.io/docs/0.9.0/components/cursor.html#events)
+                    alert("do your stuff");
+                });
+            }
+        });
+        </script>
       <style>
         .buttons {
           position: absolute;
@@ -50,7 +48,8 @@
           </div>
 
 
-        <a-scene
+        <a-scene 
+            stats
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
             renderer="logarithmicDepthBuffer: true;"
@@ -73,6 +72,8 @@
                     src="assets/asset.glb"
                     shadow="cast: true"
                 ></a-asset-item>
+
+                
             </a-assets>
 
             <a-marker
@@ -94,6 +95,10 @@
                     class="clickable"
                     gesture-handler
                 ></a-entity>
+
+                <a-text id="text" class="intersectable" scale="2 2 2" position="1 0 0" value="text" color="red"></a-text>  
+
+                <a-box  scale="0.2  0.2" position='2 0.5 0' material='opacity: 0.5;'></a-box>
 
                
             </a-marker>
