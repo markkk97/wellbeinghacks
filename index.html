@@ -16,6 +16,7 @@
 
                     // every click, we make our model grow in size :)
                     animatedMarker.addEventListener('click', function(ev, target){
+                        console.log("click");
 
                         alert("clicked");
 
@@ -87,7 +88,8 @@
                 
             </a-assets>
 
-            <a-marker
+            <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='pattern'  preset="custom" url="assets/marker.patt" value='6'>
+                <!-- <a-marker
                 id="animated-marker"
                 type="pattern"
                 preset="custom"
@@ -96,20 +98,22 @@
                 emitevents="true"
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
-            >
+            > -->
+           
           
-                <a-entity
-                    id="bowser-model"
-                    scale="1  1"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
+            <a-entity
+            id="animated-model"
+            scale="1"
+            animation-mixer="loop: repeat"
+            gltf-model="#animated-asset"
+            
+        ></a-entity>
 
-                <a-text id="text" class="intersectable" scale="2 2 2" position="1 0 0" value="ar1" color="red"></a-text>  
+               
 
-                <a-box  scale="0.2  0.2" position='2 0.5 0' material='opacity: 0.5;'></a-box>
+                <!-- <a-text id="text" class="intersectable" scale="2 2 2" position="1 0 0" value="ar1" color="red"></a-text>  
+
+                <a-box  scale="0.2  0.2" position='2 0.5 0' material='opacity: 0.5;'></a-box> -->
 
                
             </a-marker>
