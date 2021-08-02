@@ -1,5 +1,9 @@
 .ar-controls{
-    margin-top: -20vh;
+    margin-top: -25vh;
+    white-space: nowrap;
+    height: 100px;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .butt-ar{
