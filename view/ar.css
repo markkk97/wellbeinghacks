@@ -23,7 +23,7 @@
     border: none;
   }
   
-  .butt-ar:focus{
+  .butt-ar:hover{
     color: #F2F1E8;
     text-decoration: none;
     background-color: #3d8b95;
