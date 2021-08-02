@@ -23,10 +23,10 @@
     border: none;
   }
   
-  .butt-ar:hover  .butt-ar:active{
-    color: #F2F1E8;
+  .butt-ar:focus{
+    background-color: #48858e;
     text-decoration: none;
-    background-color: #3d8b95;
+    color: #F2F1E8 !important;
     border: 2px solid #F2F1E8;
     width: auto;
 
