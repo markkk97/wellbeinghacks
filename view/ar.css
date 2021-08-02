@@ -1,7 +1,10 @@
 .ar-controls{
     margin-top: -25vh;
-    white-space: nowrap;
-    height: 100px;
+    
+}
+
+.scrolling-buttons{
+    white-space: nowrap;    
     overflow-x: scroll;
     overflow-y: hidden;
 }
