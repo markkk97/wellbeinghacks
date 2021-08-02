@@ -11,7 +11,8 @@ export var scene,
     mixer,                              // THREE.js animations mixer
     idle,    
     activeAction,
-    previousAction,                        // Idle, the default state our character returns to
+    previousAction,  
+    sphere,                      // Idle, the default state our character returns to
     clock = new THREE.Clock(),          // Used for anims, which run to a clock instead of frame rate 
     currentlyAnimating = false,         // Used to check whether characters neck is being used in another anim
     raycaster = new THREE.Raycaster(),  // Used to detect the click on our character
@@ -123,12 +124,32 @@ export var scene,
 
       //circle behinf character
       var geometry = new THREE.SphereGeometry(8, 32, 32);
-      var material = new THREE.MeshBasicMaterial({ color: 0x5CA8B2 }); // 0xf2ce2e 
-      var sphere = new THREE.Mesh(geometry, material);
+      var material = new THREE.MeshPhongMaterial({ color: 0x5CA8B2, shininess:40,  }); // 0xf2ce2e 
+      sphere = new THREE.Mesh(geometry, material);
+
+
+      
       sphere.position.z = -15;
       sphere.position.y = 1;
       sphere.position.x = -0.25;            
       scene.add(sphere);
+
+     
+
+    
+
+
+//       geometry = new THREE.SphereGeometry(1, 32, 32);
+// material = new THREE.MeshPhongMaterial({
+//   color: 0x777777,
+//   shininess: 400,
+// });
+// sphere = new THREE.Mesh(geometry, material);
+// scene.add(sphere);
+
+// var light = new THREE.DirectionalLight(0xffffff, 1);
+// light.position.set(0, 10, 10);
+// scene.add(light);
     
     }
 
@@ -248,9 +269,7 @@ export var scene,
               activeAction.play(startAnim);
               
               $(".hack-element").on( "click", function() {
-                Cookies.set('hack-id', $(this).attr('id'));
-                 
-          
+                Cookies.set('hack-id', $(this).attr('id'));                        
               });
 
               $(".hack-element").mouseenter(function() {
@@ -261,50 +280,7 @@ export var scene,
               fadeToAction("happyIdle",0.5,fileAnimations,mixer,THREE); 
             });
             
-              
-          //   hackMeditate.onmouseover = function (){
-          //       console.log("hovered the element");
-          //       fadeToAction('idle',0.5,fileAnimations,mixer,THREE);   
-          //   }
-
-          //   hackMeditate.onmouseout = function (){
-              
-          //     fadeToAction('idle',0.8,fileAnimations,mixer,THREE);   
-          // }
-
-          // hackStrech.onmouseover = function (){
-          //   console.log("hovered the element");
-          //  fadeToAction('stretch',0.2,fileAnimations,mixer,THREE);   
-          // }
-
-          // hackStrech.onmouseout = function (){
-          // fadeToAction('idle',0.8,fileAnimations,mixer,THREE);   
-          // }
-
-          // hackJj.onmouseover = function (){
-          //   console.log("hovered the element");
-          //  fadeToAction('jj',0.2,fileAnimations,mixer,THREE);   
-          // }
-
-          // hackJj.onmouseout = function (){
-          // fadeToAction('idle',0.8,fileAnimations,mixer,THREE);   
-          // }
-
-          // hackCc.onmouseover = function (){
-          //   console.log("hovered the element");
-          //  fadeToAction('crossCrawl',0.2,fileAnimations,mixer,THREE);   
-          // }
-
-          // hackCc.onmouseout = function (){
-          // fadeToAction('idle',0.8,fileAnimations,mixer,THREE);   
-          // }
-
-
-
-           
-        
-              
-             
+      
           },
           undefined, // We don't need this function
           function(error) {
@@ -364,9 +340,7 @@ export var scene,
 
               console.log(fileAnimations);
               
-              //set start animation
-              var startAnim = THREE.AnimationClip.findByName(fileAnimations, 'idle');   
-
+             
               
              //set title
             $.getJSON(hackJson, function(data) {          
@@ -401,14 +375,23 @@ export var scene,
               }
                //logic that establishes which exercise will be played
                // add if logic that plays the right animations based on the cookie that is set
+                //set start animation
+              var startAnim = THREE.AnimationClip.findByName(fileAnimations, 'idle');   
+
 
               if (hackToPLay === "jj") {
-                JjExerciseFlow(vid,startAnim, fileAnimations);          
+                startAnim = THREE.AnimationClip.findByName(fileAnimations, 'danceCombo');                             
+                JjExerciseFlow(vid,startAnim, fileAnimations);  
+
               } else if(hackToPLay === "sideStretching") {
+                startAnim = THREE.AnimationClip.findByName(fileAnimations, 'excited');    
                 SideStretchingExerciseFlow(vid,startAnim, fileAnimations); 
+
               } else if(hackToPLay === "meditate") {
                 meditateExerciseFlow(vid,startAnim, fileAnimations); 
+
               } else {
+                startAnim = THREE.AnimationClip.findByName(fileAnimations, 'excited');    
                 crossCrawlExerciseFlow(vid,startAnim, fileAnimations);
               }
 
@@ -517,10 +500,10 @@ export var scene,
     }
 
     function JjExerciseFlow(vid,startAnim,fileAnimations) {
-      
-      
-      
-      //flow of exercise 
+       setTimeout(function(){             
+                  fadeToAction('happyIdle',0.8,fileAnimations,mixer,THREE);                    
+        },1700);
+    
       activeAction = mixer.clipAction(startAnim);
       activeAction.play();
 
@@ -550,7 +533,9 @@ export var scene,
 
     function SideStretchingExerciseFlow(vid,startAnim,fileAnimations) {
       
-      
+      setTimeout(function(){             
+        fadeToAction('happyIdle',0.8,fileAnimations,mixer,THREE);                    
+      },3000);
       
       //flow of exercise 
       activeAction = mixer.clipAction(startAnim);
@@ -573,7 +558,42 @@ export var scene,
       
     }
 
+    
+
+    function animateSphere() {
+
+      requestAnimationFrame(animateSphere);
+      render();
+  
+  }
+  
+    function render() {
+        sphere.rotation.x += 0.01;
+        sphere.rotation.y += 0.02;
+        
+        var t = clock.getElapsedTime();
+
+        if (t >= 6.0){
+          //getting big
+            clock = new THREE.Clock;           
+            sphere.scale.x = 1+(t/5.0);
+            sphere.scale.y = 1+(t/5.0);
+            sphere.scale.z = 1+(t/5.0);  
+        }
+        else{   
+          //getting small
+          sphere.scale.x = 1-(t/3);
+          sphere.scale.y = 1-(t/3);
+          sphere.scale.z = 1-(t/3);   
+        }
+        renderer.render(scene, camera);
+    }
+
+
     function meditateExerciseFlow(vid,startAnim,fileAnimations) {
+      
+      //breathing sphere
+      animateSphere();
       
      //flow of exercise 
      activeAction = mixer.clipAction(startAnim);
@@ -599,7 +619,9 @@ export var scene,
 
     function crossCrawlExerciseFlow(vid,startAnim,fileAnimations) {
       
-      
+      setTimeout(function(){             
+        fadeToAction('happyIdle',0.8,fileAnimations,mixer,THREE);                    
+      },3000);
       
       //flow of exercise 
       activeAction = mixer.clipAction(startAnim);
@@ -646,7 +668,7 @@ export var scene,
         requestAnimationFrame(update);
     }
       
-       // update();
+       // update(renderer);
 
     function resizeRendererToDisplaySize(renderer) {
         const canvas = renderer.domElement;

@@ -119,28 +119,6 @@ border: 2px solid rgb(255, 255, 255);
   border: none;
 }
 
-.butt-ar{
-  padding: 10px 20px;
-  font-family: 'Poppins', sans-serif, !important;
-  font-size: 1.25rem;
-  font-weight: 300;
-  background-color: #5CA8B2;
-  color: #F2F1E8 !important;
-  border-radius: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border: none;
-}
-
-.butt-ar:focus{
-  color: #F2F1E8;
-  text-decoration: none;
-  background-color: #3d8b95;
-  border: 2px solid #F2F1E8;
-  width: auto;
- 
-}
 
 .butt2{
   padding: 10px 20px;
