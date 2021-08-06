@@ -20,10 +20,28 @@
             <div class="col-7  home-banner p-5">
                 <div class="mb-3 mb-lg-0 text-center text-lg-start ">
                     <h1 class="display-2 lh-1 mb-5">Well-Being Hacks</h1>
-                    <p class="lead mb-3">Quick & daily wellbeing exercises to integrate during your working day, 
+                    <p class="lead">Quick & daily wellbeing exercises to integrate during your working day, 
                         to feel more balanced, energised and relaxed.</p>
-                        <a class="butt" href="./list.html" >Start experience  <span>💪</span></a>               
-                    
+                         
+                        <a class="butt m-2"  href="./list.html">On your Laptop <span> 💻 </span></a>
+                        <button id="starterAR" class="butt" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">In Augmented Reality <span> 📱 </span></button>                                               
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Scan the QR with your smatphone</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                ...
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+  
                 </div>           
             </div>
             <div class="col-5 scene-container">
@@ -51,6 +69,7 @@
 </html>
 
 <script src="../bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
 
 <!-- The main Three.js file -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js'></script>

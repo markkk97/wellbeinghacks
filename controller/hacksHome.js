@@ -12,12 +12,16 @@ export var scene,
     idle,    
     activeAction,
     previousAction,  
-    sphere,                      // Idle, the default state our character returns to
+    sphere,  
+    fileAnimations,                    // Idle, the default state our character returns to
     clock = new THREE.Clock(),          // Used for anims, which run to a clock instead of frame rate 
     currentlyAnimating = false,         // Used to check whether characters neck is being used in another anim
     raycaster = new THREE.Raycaster(),  // Used to detect the click on our character
     loaderAnim = document.getElementById('js-loader'),
-    containerCanvas = document.querySelector('.container-canvas');
+    containerCanvas = document.querySelector('.container-canvas'),
+    controller =  document.getElementById("controller"),
+    audioController =  document.getElementById("audio-controller"),
+    vid = document.getElementById("video-exercise");
     
 
 
@@ -186,7 +190,7 @@ export var scene,
 
             //prepare amimations
             mixer = new THREE.AnimationMixer(model);                        
-            let fileAnimations = gltf.animations;
+            fileAnimations = gltf.animations;
 
             console.log(fileAnimations);
             
@@ -291,14 +295,14 @@ export var scene,
     }
 
 
-    function playExercise(actionToContinue,vid,fileAnimations) { 
+   export function playExercise(actionToContinue,vid,fileAnimations) { 
       console.log(actionToContinue._clip.name);
       fadeToAction(actionToContinue._clip.name,0.8,fileAnimations,mixer,THREE);
       ///action.enabled=true; 
       vid.play();
     } 
 
-    function pauseExercise(vid,fileAnimations) { 
+   export function pauseExercise(vid,fileAnimations) { 
       fadeToAction("idle",0.8,fileAnimations,mixer,THREE);
       //action.enabled= false;
       vid.pause();
@@ -309,10 +313,8 @@ export var scene,
     export function characterExercise(){
 
       //html buttons and content needed
-      const  controller =  document.getElementById("controller"),
-      audioController =  document.getElementById("audio-controller"),
-      vid = document.getElementById("video-exercise"),
-      starter = document.getElementById("starter"),
+      
+      var starter = document.getElementById("starter"),
       exerciseElements = document.getElementById("exercise-element"),
       exerciseBenefits = document.getElementById("exercise-benefits"),
       exerciseStartDiv = document.getElementById("exercise-start"),  
@@ -459,37 +461,8 @@ export var scene,
               };
 
 
-              //controlling of play pause
-              controller.onclick = function () { 
-                         
-               if (vid.paused) {
-                 //go back to playing                
-                  playExercise(previousAction,vid,fileAnimations);
-                  controller.innerHTML = "<i class='fa fa-pause-circle' aria-hidden='true'></i>";                            
-               } else {
-                //go to paused                   
-                  pauseExercise(vid,fileAnimations);    
-                  controller.innerHTML = "<i class='fa fa-play-circle' aria-hidden='true'></i>";
-               }              
-               
-              }
-
-              //controlling of audio
-              audioController.onclick = function () { 
-                           
-                if (!vid.muted) {
-                  console.log("from play to mute");
-                  //from mute to play                
-                  vid.muted = true;
-                  audioController.innerHTML = "<i class='fa fa-volume-up' aria-hidden='true'></i>";                              
-                } else {
-                  console.log("from mute to play ");
-                 //from play to mute                   
-                  vid.muted = false;
-                  audioController.innerHTML =   "<i class='fa fa-volume-off' aria-hidden='true'></i>";                              
-                }                 
-                
-               }
+              playController(vid,controller,fileAnimations);
+              audioControllers(vid,audioController);
                                               
           },
           undefined, // We don't need this function
@@ -497,6 +470,45 @@ export var scene,
             console.error(error);
           }
         );              
+    }
+
+    function playController(vid,controller,fileAnimations) {
+      //controlling of play pause
+      controller.onclick = function () { 
+                         
+        if (vid.paused) {
+          //go back to playing                
+           playExercise(previousAction,vid,fileAnimations);
+           controller.innerHTML = "<i class='fa fa-pause-circle' aria-hidden='true'></i>";                            
+        } else {
+         //go to paused                   
+           pauseExercise(vid,fileAnimations);    
+           controller.innerHTML = "<i class='fa fa-play-circle' aria-hidden='true'></i>";
+        }              
+        
+       }
+      }
+
+
+    function audioControllers(vid,audioController) {
+     
+       //controlling of audio
+       audioController.onclick = function () { 
+                    
+         if (!vid.muted) {
+           console.log("from play to mute");
+           //from mute to play                
+           vid.muted = true;
+           audioController.innerHTML = "<i class='fa fa-volume-up' aria-hidden='true'></i>";                              
+         } else {
+           console.log("from mute to play ");
+          //from play to mute                   
+           vid.muted = false;
+           audioController.innerHTML =   "<i class='fa fa-volume-off' aria-hidden='true'></i>";                              
+         }                 
+         
+        }
+      
     }
 
     function JjExerciseFlow(vid,startAnim,fileAnimations) {
@@ -710,6 +722,60 @@ export var scene,
         .fadeIn( duration )
         .play();
 
+    }
+
+
+    export function ARController(){
+
+      $("#play-pause").hide();
+
+      $(".animation").click(function() {
+
+        $("#play-pause").show();
+
+        var activeAnimationAR,previousAnimationAR = "";
+        var character = document.querySelector("#bowser-model");  
+       
+        activeAnimationAR =  $(this).attr('id');
+        var audio = document.querySelector("#exerciseAudio");
+
+        //Cookies.set('hack-id', activeAnimation);
+        console.log(activeAnimationAR);
+        
+        
+        character.setAttribute("animation-mixer", {clip: activeAnimationAR})     
+        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a")
+        audio.play();
+
+        controller.onclick = function () { 
+                    
+          if (audio.paused) {
+            console.log("go back to playing");
+            //go back to playing                
+            character.setAttribute("animation-mixer", {clip: previousAnimationAR});
+            controller.innerHTML = "<i class='fa fa-pause-circle' aria-hidden='true'></i>";   
+            audio.play();                         
+          } else {
+            //go to paused 
+            console.log("go to paused");
+            previousAnimationAR =  activeAnimationAR;
+            activeAnimationAR = "idle";
+            character.setAttribute("animation-mixer", {clip: activeAnimationAR})      
+            activeAnimationAR = previousAnimationAR;
+            controller.innerHTML = "<i class='fa fa-play-circle' aria-hidden='true'></i>";
+            audio.pause(); 
+          }              
+          
+         }
+
+         audioControllers(audio,audioController);
+
+        audio.onended = function() {
+          character.setAttribute("animation-mixer", {clip: "idle"});     
+        }; 
+        
+        
+    });
     }
 
     
