@@ -17,29 +17,34 @@
  
 
     <div class="container">
-      <!-- <div class="sticky-header filter-banner">     
-        <h3 class="lh-1 mb-1">I wanna be..</h3>             
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <button type="button" class="btn btn-primary m-3">Balanced</button>
-            <button type="button" class="btn btn-secondary m-3">Energised</button>
-            <button type="button" class="btn btn-success m-3">Relaxed</button>
+      
+      <div class="sticky-header filter-banner">    
+        <a class="butt mt-1" href="./homeHacks.html" > <span> ⏪</span> Home</a> 
+                    
+        <!-- <div id="filters" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"></div> -->
+          <div id='filters' class="mt-4">
+            <button class='relax'>Relax</button>
+            <button class='balanced'>Balanced</button>
+            <button class='energised'>Energised</button>
+            <button class='clear'>All</button>
+            
         </div>
-      </div> -->
+        <!-- </div> -->
+      </div>
       
         <div class="row hacklist"> 
-
-            <div class="col-7  ">                      
+            <div class="col-7 ">                      
                 <div class="mb-5 mb-lg-0 text-center text-lg-start pt-5"> 
                       
-                  <a class="card-link" href="exercise.html">
+                  <a class="card-link relax" href="exercise.html">
                     <div id="meditate" class="hack-element card flex-md-row mb-4 box-shadow h-md-180">
-                        <div  class="col p-4 d-flex flex-column position-static">                      
+                      <div class="card-body d-flex flex-column align-items-start">                     
                           <h3 class="mb-1">
                             One Minute Meditation
                           </h3>                        
                           <p class="card-text mb-2 benefit">Daily meditation will improve your ability to cope with stressful circumstances.</p>                                                   
                           <p class="mt-2">
-                            <span class="tags tags-relax">Relaxed </span>
+                            <span class="tags  tags-relax">Relaxed </span>
                             <span class="tags tags-time">1 min</span> 
                           </p>
                         </div>
@@ -48,7 +53,7 @@
                     </div>
                   </a>
 
-                    <a class="card-link" href="exercise.html">
+                    <a class="card-link balanced" href="exercise.html">
                       <div id="sideStretching" class="hack-element card flex-md-row mb-4 box-shadow h-md-180">
                         <div class="card-body d-flex flex-column align-items-start">                        
                           <h3 class="mb-1">
@@ -64,7 +69,7 @@
                       </div>
                       </a>
 
-                      <a class="card-link" href="exercise.html">
+                      <a class="card-link energised" href="exercise.html">
                         <div  id="jj"  class="hack-element card flex-md-row mb-4 box-shadow h-md-180">
                           <div class="card-body d-flex flex-column align-items-start">                        
                             <h3 class="mb-1">
@@ -81,7 +86,7 @@
                       </a>
 
 
-                      <a class="card-link" href="exercise.html">
+                      <a class="card-link balanced" href="exercise.html">
                         <div id="crossCrawling" class="hack-element card flex-md-row mb-4 box-shadow h-md-180">
                           <div class="card-body d-flex flex-column align-items-start">                        
                             <h3 class="mb-1">
@@ -90,7 +95,7 @@
                             <p class="card-text mb-2 benefit">Cross crawl will help you recharge your energy and focus your attention.</p>
                             </p>
                             <p class="mt-2">
-                              <span class="tags tags-relax">Balanced </span>
+                              <span class="tags  tags-balanced">Balanced </span>
                               <span class="tags tags-time">1 min</span> 
                             </p>
                           </div>
@@ -151,19 +156,33 @@
   </script>
 
   <script>
-      // $(window).scroll(function(){
-      //     var sticky = $('.sticky-header'),
-      //         scroll = $(window).scrollTop(),
-      //         container = $('.scene-container');
-      //       if (scroll >= 10) sticky.addClass('fixed');
-      //       else sticky.removeClass('fixed');
-      // });
+      $(window).scroll(function(){
+          var sticky = $('.sticky-header'),
+              scroll = $(window).scrollTop(),
+              container = $('.scene-container');
+            if (scroll >= 40) sticky.addClass('fixed');
+            else sticky.removeClass('fixed');
+      });
 
 
-      // $(".hack-element").on( "click", function() {
-      //   Cookies.set('prova', $(this).attr('id'));
-      //   console.log(Cookies.get('prova')); 
+      $(".hack-element").on( "click", function() {
+        Cookies.set('prova', $(this).attr('id'));
+        console.log(Cookies.get('prova')); 
       
-      // });
+      });
+
+      $("#filters button").each(function() {
+          $(this).on("click", function(){
+              var filtertag = $(this).attr('class');
+              $('.card-link').show();
+              $('.card-link:not(.' + filtertag + ')').hide();
+          });
+      });
+
+      $(".clear").click(function(e) { //reset button is clicked
+
+          $(".card-link").show();
+         
+      });
    
   </script>

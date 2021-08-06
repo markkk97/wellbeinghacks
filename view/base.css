@@ -166,7 +166,27 @@ box-shadow: -1px 31px 15px -15px rgba(119,119,119,0.61);
 box-shadow: -1px 31px 15px -15px rgba(119,119,119,0.61);
 }
 
+#filters button{
+  padding: 2px 7px;
+  font-family: 'Poppins', sans-serif, !important;
+  font-size: 1.25rem;
+  font-weight: 300;
+  background: none;
+  color:  #5CA8B2 !important;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid #5CA8B2;
 
+
+}
+
+#filters button:focus{
+  background-color:  #5CA8B2 !important;
+  color:  #ffffff !important;
+  
+}
 
 
 .home-banner{
@@ -219,7 +239,7 @@ top: 2vh;
 
 .fixed {
   position: fixed;
-  top: 2vh;
+  margin-top: -40px;
   z-index: 9999 !important;
 }
 
