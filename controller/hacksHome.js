@@ -727,6 +727,7 @@ export var scene,
 
     export function ARController(){
 
+    
       $("#play-pause").hide();
 
       $(".animation").click(function() {
