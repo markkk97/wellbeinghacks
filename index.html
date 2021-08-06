@@ -22,8 +22,8 @@
         
             vr-mode-ui="enabled: false;"
             loading-screen="dotsColor: blue; backgroundColor: white"
-            renderer="logarithmicDepthBuffer: true;"
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true;"
+            renderer="logarithmicDepthBuffer: false;"
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
             id="scene"
             embedded
             gesture-detector
@@ -49,7 +49,7 @@
                 <a-entity light="type: directional;
                                 castShadow: true;
                                 intensity: 3;
-                                shadowCameraVisible: true;"
+                                shadowCameraVisible: false;"
                         position="-1 1 0">
                 </a-entity>
 
@@ -72,7 +72,7 @@
         
         
         <div class="fixed-bottom container-fluid ar-controls">  
-            <h4>Choose your exercise</h4>
+            <!-- <h4>Choose your exercise</h4> -->
 
             <div class="scrolling-buttons flex-nowrap mt-1 pb-4 pt-2">                       
                 <button onclick="this.focus()" id="meditate" class= " butt-ar animation" type="button">One Minute Meditation </button>
