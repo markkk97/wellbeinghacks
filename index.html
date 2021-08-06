@@ -6,27 +6,25 @@
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        
-        
-        
-        <link rel="stylesheet" type="text/css" href="view/ar.css" />
-        <link rel="stylesheet" type="text/css" href="view/base.css" />
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://use.fontawesome.com/ecd900b485.js"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="view/ar.css" />
     </head>
     <body style="margin: 0; overflow: hidden;">
-
-
-        <a-scene
         
+        <a-scene
             vr-mode-ui="enabled: false;"
-            loading-screen="dotsColor: blue; backgroundColor: white"
-            renderer="logarithmicDepthBuffer: false;"
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+            loading-screen="enabled: false;"
+            renderer="logarithmicDepthBuffer: true;"
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true;"
             id="scene"
             embedded
             gesture-detector
+            loading-screen="dotsColor: blue; backgroundColor: white"
+
         >
             <a-assets>
                 <a-asset-item
@@ -49,10 +47,9 @@
                 <a-entity light="type: directional;
                                 castShadow: true;
                                 intensity: 3;
-                                shadowCameraVisible: false;"
+                                shadowCameraVisible: true;"
                         position="-1 1 0">
                 </a-entity>
-
                 <!-- <a-light type="directional" position="-1 1 0" rotation="90 0 0" intensity=3 shadowCameraVisible="true" target="#directionaltarget">
                     <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
                   </a-light> -->
@@ -63,7 +60,6 @@
                     gltf-model="#animated-asset"
                     class="clickable"
                     gesture-handler
-                    loader
                 ></a-entity>
                
             </a-marker>
@@ -72,29 +68,28 @@
         
         
         <div class="fixed-bottom container-fluid ar-controls">  
-            <!-- <h4>Choose your exercise</h4> -->
+            <h4>Choose your exercise1</h4>
 
             <div class="scrolling-buttons flex-nowrap mt-1 pb-4 pt-2">                       
+                
                 <button onclick="this.focus()" id="meditate" class= " butt-ar animation" type="button">One Minute Meditation </button>
                 <button onclick="this.focus()" id="jj" class="butt-ar animation" type="button"> Jumping Jacks </button> 
                 <button onclick="this.focus()" id="sideStretching" class="butt-ar animation" type="button"> sideStretching </button> 
                 <button onclick="this.focus()" id="crossCrawling" class="butt-ar animation" type="button"> Cross Crawl </button>
-                
             </div>
+            
             <audio id="exerciseAudio" >
                 <source src="assets/audio/crossCrawling.m4a">
             </audio>
-           
+
             <div id="play-pause">
                 <button onclick="this.focus()" class="butt2"  id="controller" type="button" ><i class="fa fa-pause-circle" aria-hidden="true"></i></button>   
                 <button onclick="this.focus()" class="butt2" id="audio-controller" type="button" > <i class='fa fa-volume-up' aria-hidden='true'></i>  </button>                                   
             </div>  
-              
+
         </div> 
     </body>
 </html>
-
-
  <!-- jquery  -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
  <!-- cookies  -->
@@ -103,19 +98,31 @@
 <script>
 
     
-
+    $(".animation").click(function() {
+        var activeAnimation = "";
+        var character = document.querySelector("#bowser-model");  
+       
+        activeAnimation =  $(this).attr('id');
+        audio = document.querySelector("#exerciseAudio");
+        //Cookies.set('hack-id', activeAnimation);
+        console.log(activeAnimation);
+        
+        character.setAttribute("animation-mixer", {clip: activeAnimation})     
+        audio.setAttribute("src","assets/audio/"+activeAnimation+".m4a")
+        audio.play();
+        
+    });
      
-     
-
   </script>
+  
 
 <script type="module">
 
     import { ARController} from "/wellbeinghacks/controller/hacksHome.js"
 
     ARController();
-   
-    
-     
-    
+
+
+
+
     </script>
