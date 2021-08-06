@@ -21,8 +21,9 @@
 
 
         <a-scene
+        
             vr-mode-ui="enabled: false;"
-            loading-screen="enabled: false;"
+            loading-screen="dotsColor: red; backgroundColor: black"
             renderer="logarithmicDepthBuffer: true;"
             arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true;"
             id="scene"
@@ -104,16 +105,8 @@
 <script>
 
     
-AFRAME.registerComponent('loader', {
-       init: function() {
-         let loader = document.querySelector("#loadingEl")
-         this.el.addEventListener('model-loaded', e => {
-           console.log('loaded')
-           loader.setAttribute("visible", "false")
-         })
-       }
-     })
 
+     
      
 
   </script>
