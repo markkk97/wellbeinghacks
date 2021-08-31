@@ -27,8 +27,11 @@ export var scene,
 
     export const 
     //model
-     MODEL_PATH = '../model/character/michelle_home3.glb',
-     MODEL_PATH2 = '../model/character/listHacks.glb',
+    MODEL_PATH = '../model/character/sophie3.glb',
+     //MODEL_PATH = '../model/character/michelle_home3.glb',
+     //MODEL_PATH2 = '../model/character/listHacks.glb',
+     MODEL_PATH2 = '../model/character/sophie3.glb',
+     //MODEL_PATH2 = '../model/character/bot2.glb',
 
     //canvas
      canvas = document.querySelector('#c'),
@@ -61,18 +64,16 @@ export var scene,
         // Add a camera
         camera = new THREE.PerspectiveCamera(
             50,
-            window.innerWidth / window.innerHeight,
-           
+            window.innerWidth / window.innerHeight,   
             0.1,
             1000
         );
         camera.position.z = 25; 
         camera.position.x = 0;
         camera.position.y = -3;
-         
-        
+           
         //setUpScene();
-
+        
         const mtl = new THREE.MeshPhongMaterial({
           color: 0xffffff,
           skinning: true 
@@ -162,14 +163,12 @@ export var scene,
        model.traverse(o => {                     
             o.castShadow = true; 
             o.receiveShadow = true;
-            //if(o.material.map) o.material.map.anisotropy = 16;        
        });
 
        // Set the models initial scale
        model.scale.set(10, 10, 10);
        //make model stand on the floor
        model.position.y = -11; 
-
        scene.add(model);
     }
 
@@ -180,6 +179,7 @@ export var scene,
       loader.load(
           MODEL_PATH,
           function(gltf) {
+
             model = gltf.scene;
               
             //position model in the scene
@@ -212,7 +212,7 @@ export var scene,
                
                setTimeout(function(){
                
-                fadeToAction('armStretching',1,fileAnimations,mixer,THREE);   
+                fadeToAction('arms',1,fileAnimations,mixer,THREE);   
                },5000);
 
                setTimeout(function(){                
@@ -238,16 +238,15 @@ export var scene,
 
 
     export function characterList() {
-      const hackMeditate =  document.getElementById("meditate"),
-            hackStrech =  document.getElementById("stretch"),
-            hackCc =  document.getElementById("crossCrawl"),
-            hackJj = document.getElementById("jj");
-
+  
       var loader = new THREE.GLTFLoader();
 
       loader.load(
           MODEL_PATH2,
           function(gltf) {
+
+            console.log(gltf);
+            
             model = gltf.scene;
               
             //position model in the scene
@@ -264,12 +263,10 @@ export var scene,
             
               let startAnim = THREE.AnimationClip.findByName(fileAnimations, 'idle');
 
-                 // function mouseOut() {
-              //   document.getElementById("demo").style.color = "black";
-              // }
               console.log(startAnim);
 
               activeAction = mixer.clipAction(startAnim);
+              
               activeAction.play(startAnim);
               
               $(".hack-element").on( "click", function() {
@@ -382,7 +379,7 @@ export var scene,
 
 
               if (hackToPLay === "jj") {
-                startAnim = THREE.AnimationClip.findByName(fileAnimations, 'danceCombo');                             
+                startAnim = THREE.AnimationClip.findByName(fileAnimations, 'excited');                             
                 JjExerciseFlow(vid,startAnim, fileAnimations);  
 
               } else if(hackToPLay === "sideStretching") {
@@ -514,7 +511,7 @@ export var scene,
     function JjExerciseFlow(vid,startAnim,fileAnimations) {
        setTimeout(function(){             
                   fadeToAction('happyIdle',0.8,fileAnimations,mixer,THREE);                    
-        },1700);
+        },3000);
     
       activeAction = mixer.clipAction(startAnim);
       activeAction.play();
