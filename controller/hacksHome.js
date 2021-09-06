@@ -27,11 +27,12 @@ export var scene,
 
     export const 
     //model
-    MODEL_PATH = '../model/character/sophie3.glb',
-     //MODEL_PATH = '../model/character/michelle_home3.glb',
-     //MODEL_PATH2 = '../model/character/listHacks.glb',
-     MODEL_PATH2 = '../model/character/sophie3.glb',
-     //MODEL_PATH2 = '../model/character/bot2.glb',
+    //MODEL_PATH = '../model/character/sophie3.glb',
+    MODEL_PATH = '../model/character/bot4.glb',
+    //MODEL_PATH = '../model/character/michelle_home3.glb',
+    //MODEL_PATH2 = '../model/character/listHacks.glb',
+    //MODEL_PATH2 = '../model/character/sophie3.glb',
+    MODEL_PATH2 = '../model/character/bot4.glb',
 
     //canvas
      canvas = document.querySelector('#c'),
