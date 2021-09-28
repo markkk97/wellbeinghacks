@@ -27,30 +27,30 @@ export var scene,
 
     export const 
     //model
-    //MODEL_PATH = '../model/character/sophie3.glb',
-    MODEL_PATH = '../model/character/bot4.glb',
+    MODEL_PATH = '../model/character/sophie3.glb',
+    //MODEL_PATH = '../model/character/bot4.glb',
     //MODEL_PATH = '../model/character/michelle_home3.glb',
+
     //MODEL_PATH2 = '../model/character/listHacks.glb',
-    //MODEL_PATH2 = '../model/character/sophie3.glb',
-    MODEL_PATH2 = '../model/character/bot4.glb',
+    MODEL_PATH2 = '../model/character/sophie3.glb',
+    //MODEL_PATH2 = '../model/character/bot4.glb',
 
     //canvas
      canvas = document.querySelector('#c'),
     
     //back color
      backgroundColor = 0xf1f1f1;
-
-    
-     
+  
 
     //init(); 
+    
 
     export function init() {
      
 
         //new scene 
         scene = new THREE.Scene();
-        scene.background = new THREE.Color('#F2F1E8');
+        scene.background = new THREE.Color('#ffffff');
         scene.fog = new THREE.Fog(backgroundColor, 60, 100);
 
         // Init the renderer
