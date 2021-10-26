@@ -29,7 +29,11 @@
             <a-assets>
                 <a-asset-item
                     id="animated-asset"
-                    src="assets/listHacks.glb"
+                    src="assets/sophie3.glb"
+                ></a-asset-item>
+                <a-asset-item
+                    id="animated-asset2"
+                    src="assets/bot4.glb"
                 ></a-asset-item>
             </a-assets>
             <a-marker
@@ -68,8 +72,6 @@
         
         
         <div class="fixed-bottom container-fluid ar-controls">  
-            <h4>Choose your exercise</h4>
-
             <div class="scrolling-buttons flex-nowrap mt-1 pb-4 pt-2">                       
                 
                 <button onclick="this.focus()" id="meditate" class= " butt-ar animation" type="button">One Minute Meditation </button>
@@ -77,18 +79,16 @@
                 <button onclick="this.focus()" id="sideStretching" class="butt-ar animation" type="button"> sideStretching </button> 
                 <button onclick="this.focus()" id="crossCrawling" class="butt-ar animation" type="button"> Cross Crawl </button>
                 <!-- <button onclick="this.focus()" id="characterSwitch" class="butt-ar" type="button"> Character </button> -->
-                
+                <div class="dropup">
+                    <button class="butt-ar">Characters</button>
+                    <div class="dropup-content">
+                      <a class="characterSwitch"  id="bot4" > Bot </a>
+                      <a class="characterSwitch"  id="sophie3"> Sophie</a>
+                      <a class="characterSwitch"  id="michelle"> Michelle</a>
+                    </div>
+                  </div>
             </div>
 
-            <div class="dropup">
-                <button class="dropbtn">Dropup</button>
-                <div class="dropup-content">
-                  <a class="characterSwitch"  id="bot" > 1</a>
-                  <a class="characterSwitch"  id="sophie"> 2</a>
-                  <a class="characterSwitch"  id="michelle"> 3</a>
-                </div>
-              </div>
-            
             <audio id="exerciseAudio" >
                 <source src="assets/audio/crossCrawling.m4a">
             </audio>
@@ -116,7 +116,7 @@
         activeAnimation =  $(this).attr('id');
         audio = document.querySelector("#exerciseAudio");
         //Cookies.set('hack-id', activeAnimation);
-        console.log(activeAnimation);
+      
         
         character.setAttribute("animation-mixer", {clip: activeAnimation})     
         audio.setAttribute("src","assets/audio/"+activeAnimation+".m4a")
@@ -127,13 +127,40 @@
     });
 
     $(".characterSwitch").click(function() {
-        console.log("pop up");
-        activeCharacter =  $(this).attr('id');
-        console.log(activeCharacter);
+        //$("a-assets")[0].attr("src","assets/hhh.glb");
+       
+        // console.log(($("#bowser-model")[0].getAttribute('gltf-model')));
+        // $("#bowser-model").attr("gltf-model","assets/bot4.glb");
+        // console.log(($("#bowser-model")[0].getAttribute('gltf-model')));
 
-        $("#animated-asset").attr("src","assets/"+activeCharacter);
 
-        console.log($("#animated-asset"));
+        var michelle = "assets/listHacks.glb", sophie = "assets/sophie3.glb", 
+        bot4="assets/bot4.glb", scene = $("#bowser-model")[0];
+
+        console.log((scene.getAttribute('gltf-model')));
+
+        if(this.id === "bot4")
+            $("#bowser-model").attr("gltf-model",bot4);
+        else if(this.id === "sophie3")
+            $("#bowser-model").attr("gltf-model",sophie);
+        else if(this.id === "michelle")
+         $("#bowser-model").attr("gltf-model",michelle);
+
+
+        //console.log(($("#bowser-model").getAttribute('id')));
+        //console.log(($("#animated-asset")[0].getAttribute('src')));
+
+        // console.log("pop up");
+        // characterToActivate =  $(this).attr('id');
+        // console.log(characterToActivate);
+        // //activeCharacter = $("#animated-asset");
+
+        // $("#animated-asset").attr("src","assets/"+characterToActivate+".glb");
+        // console.log($("#animated-asset"));
+      
+
+
+       //console.log(jQuery.parseJSON(activeCharacter.toString())); 
 
         
 

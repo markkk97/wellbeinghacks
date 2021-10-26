@@ -31,9 +31,9 @@ export var scene,
     //MODEL_PATH = '../model/character/bot4.glb',
     MODEL_PATH = '../model/character/michelle_home3.glb',
 
-    //MODEL_PATH2 = '../model/character/listHacks.glb',
+    MODEL_PATH2 = '../model/character/listHacks.glb',
    // MODEL_PATH2 = '../model/character/sophie3.glb',
-    MODEL_PATH2 = '../model/character/bot4.glb',
+    //MODEL_PATH2 = '../model/character/bot4.glb',
 
     //canvas
      canvas = document.querySelector('#c'),
@@ -741,9 +741,8 @@ export var scene,
         //Cookies.set('hack-id', activeAnimation);
         console.log(activeAnimationAR);
         
-        
-        character.setAttribute("animation-mixer", {clip: activeAnimationAR})     
-        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a")
+        character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
+        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
         audio.play();
 
         controller.onclick = function () { 
