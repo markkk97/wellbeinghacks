@@ -743,8 +743,8 @@
         
         
         character.setAttribute("animation-mixer", {clip: activeAnimationAR})     
-        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a")
-        audio.play();
+        //audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a")
+        //audio.play();
 
         controller.onclick = function () { 
                     
