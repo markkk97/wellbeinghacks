@@ -1,7 +1,7 @@
 //import { setUpScene } from './setUp.js';
 //(function() {
     // Set our main variables
-export var scene,  
+    export var scene,  
     renderer,
     camera,
     model,                              // Our character
@@ -741,36 +741,10 @@ export var scene,
         //Cookies.set('hack-id', activeAnimation);
         console.log(activeAnimationAR);
         
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        try {
-          character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
-     
-          audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
-     
-          audio.play();
-        } catch (err) {
-          // If it gets back and was rejected, here we will console log the error to see what exactly failed
-          // In your case, the IP address you used failed to load the music. 
-          console.log(err);
-        }
-     
-=======
-        character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
-        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
-        audio.play();
->>>>>>> parent of 2a34ace (trying to fix load exception)
-=======
-        character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
-        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
-=======
         
         character.setAttribute("animation-mixer", {clip: activeAnimationAR})     
         audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a")
->>>>>>> parent of d2445d8 (implementation of character switch)
         audio.play();
->>>>>>> parent of 2a34ace (trying to fix load exception)
 
         controller.onclick = function () { 
                     
