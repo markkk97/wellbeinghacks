@@ -76,14 +76,14 @@
                 <button onclick="this.focus()" id="sideStretching" class="butt-ar animation" type="button"> sideStretching </button> 
                 <button onclick="this.focus()" id="crossCrawling" class="butt-ar animation" type="button"> Cross Crawl </button>
                 <!-- <button onclick="this.focus()" id="characterSwitch" class="butt-ar" type="button"> Character </button> -->
-                <div class="dropup">
+                <!-- <div class="dropup">
                     <button class="butt-ar">Characters</button>
                     <div class="dropup-content">
                       <a class="characterSwitch"  id="bot4" > Bot </a>
                       <a class="characterSwitch"  id="sophie3"> Sophie</a>
                       <a class="characterSwitch"  id="michelle"> Michelle</a>
                     </div>
-                  </div>
+                  </div> -->
             </div>
 
             <audio preload="auto" id="exerciseAudio" >
@@ -123,28 +123,28 @@
         
     });
 
-    $(".characterSwitch").click(function() {
-        //$("a-assets")[0].attr("src","assets/hhh.glb");
+    // $(".characterSwitch").click(function() {
+    //     //$("a-assets")[0].attr("src","assets/hhh.glb");
        
-        // console.log(($("#bowser-model")[0].getAttribute('gltf-model')));
-        // $("#bowser-model").attr("gltf-model","assets/bot4.glb");
-        // console.log(($("#bowser-model")[0].getAttribute('gltf-model')));
+    //     // console.log(($("#bowser-model")[0].getAttribute('gltf-model')));
+    //     // $("#bowser-model").attr("gltf-model","assets/bot4.glb");
+    //     // console.log(($("#bowser-model")[0].getAttribute('gltf-model')));
 
 
-        var michelle = "assets/listHacks.glb", sophie = "assets/sophie3.glb", 
-        bot4="assets/bot4.glb", scene = $("#bowser-model")[0];
+    //     var michelle = "assets/listHacks.glb", sophie = "assets/sophie3.glb", 
+    //     bot4="assets/bot4.glb", scene = $("#bowser-model")[0];
 
-        console.log((scene.getAttribute('gltf-model')));
+    //     console.log((scene.getAttribute('gltf-model')));
 
-        if(this.id === "bot4")
-            $("#bowser-model").attr("gltf-model",bot4);
-        else if(this.id === "sophie3")
-            $("#bowser-model").attr("gltf-model",sophie);
-        else if(this.id === "michelle")
-         $("#bowser-model").attr("gltf-model",michelle);
+    //     if(this.id === "bot4")
+    //         $("#bowser-model").attr("gltf-model",bot4);
+    //     else if(this.id === "sophie3")
+    //         $("#bowser-model").attr("gltf-model",sophie);
+    //     else if(this.id === "michelle")
+    //      $("#bowser-model").attr("gltf-model",michelle);
 
 
-    })
+    // })
     
      
   </script>
