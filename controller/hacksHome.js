@@ -737,11 +737,11 @@ export var scene,
        
         activeAnimationAR =  $(this).attr('id');
         var audio = document.querySelector("#exerciseAudio");
-       
 
         //Cookies.set('hack-id', activeAnimation);
         console.log(activeAnimationAR);
         
+<<<<<<< HEAD
         try {
           character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
      
@@ -754,6 +754,11 @@ export var scene,
           console.log(err);
         }
      
+=======
+        character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
+        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
+        audio.play();
+>>>>>>> parent of 2a34ace (trying to fix load exception)
 
         controller.onclick = function () { 
                     
