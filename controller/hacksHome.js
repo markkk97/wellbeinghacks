@@ -737,13 +737,25 @@ export var scene,
        
         activeAnimationAR =  $(this).attr('id');
         var audio = document.querySelector("#exerciseAudio");
+       
 
         //Cookies.set('hack-id', activeAnimation);
         console.log(activeAnimationAR);
         
-        character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
-        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
-        audio.play();
+        try {
+          character.setAttribute("animation-mixer", {clip: activeAnimationAR});  
+          
+          
+          audio.load();
+          audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
+     
+          audio.play();
+        } catch (err) {
+          // If it gets back and was rejected, here we will console log the error to see what exactly failed
+          // In your case, the IP address you used failed to load the music. 
+          console.log(err);
+        }
+     
 
         controller.onclick = function () { 
                     

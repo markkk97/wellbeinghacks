@@ -31,10 +31,7 @@
                     id="animated-asset"
                     src="assets/sophie3.glb"
                 ></a-asset-item>
-                <a-asset-item
-                    id="animated-asset2"
-                    src="assets/bot4.glb"
-                ></a-asset-item>
+                
             </a-assets>
             <a-marker
                 id="animated-marker"
@@ -89,7 +86,7 @@
                   </div>
             </div>
 
-            <audio id="exerciseAudio" >
+            <audio preload="auto" id="exerciseAudio" >
                 <source src="assets/audio/crossCrawling.m4a">
             </audio>
 
@@ -147,26 +144,6 @@
          $("#bowser-model").attr("gltf-model",michelle);
 
 
-        //console.log(($("#bowser-model").getAttribute('id')));
-        //console.log(($("#animated-asset")[0].getAttribute('src')));
-
-        // console.log("pop up");
-        // characterToActivate =  $(this).attr('id');
-        // console.log(characterToActivate);
-        // //activeCharacter = $("#animated-asset");
-
-        // $("#animated-asset").attr("src","assets/"+characterToActivate+".glb");
-        // console.log($("#animated-asset"));
-      
-
-
-       //console.log(jQuery.parseJSON(activeCharacter.toString())); 
-
-        
-
-
-        // id="animated-asset"
-        //             src="assets/bot4.glb"
     })
     
      
