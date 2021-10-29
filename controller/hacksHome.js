@@ -742,6 +742,7 @@ export var scene,
         console.log(activeAnimationAR);
         
 <<<<<<< HEAD
+<<<<<<< HEAD
         try {
           character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
      
@@ -754,6 +755,11 @@ export var scene,
           console.log(err);
         }
      
+=======
+        character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
+        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
+        audio.play();
+>>>>>>> parent of 2a34ace (trying to fix load exception)
 =======
         character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
         audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
