@@ -25,6 +25,7 @@
             <a-assets>
                 <a-asset-item
                     id="animated-asset"
+<<<<<<< HEAD
                     src="assets/bot4.glb"
                     src="assets/listHacks.glb"
                 ></a-asset-item>
@@ -36,6 +37,9 @@
                 <a-asset-item
                     id="animated-asset2"
                     src="assets/bot4.glb"
+=======
+                    src="assets/listHacks.glb"
+>>>>>>> parent of d2445d8 (implementation of character switch)
                 ></a-asset-item>
 <<<<<<< HEAD
 >>>>>>> parent of 2a34ace (trying to fix load exception)
@@ -79,6 +83,10 @@
         
         <div class="fixed-bottom container-fluid ar-controls">  
             <h4>Choose your exercise</h4>
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of d2445d8 (implementation of character switch)
             <div class="scrolling-buttons flex-nowrap mt-1 pb-4 pt-2">                       
                 
                 <button onclick="this.focus()" id="meditate" class= " butt-ar animation" type="button">One Minute Meditation </button>
@@ -86,11 +94,17 @@
                 <button onclick="this.focus()" id="sideStretching" class="butt-ar animation" type="button"> sideStretching </button> 
                 <button onclick="this.focus()" id="crossCrawling" class="butt-ar animation" type="button"> Cross Crawl </button>
                 <!-- <button onclick="this.focus()" id="characterSwitch" class="butt-ar" type="button"> Character </button> -->
+<<<<<<< HEAD
 
             </div>
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+                
+            </div>
+
+>>>>>>> parent of d2445d8 (implementation of character switch)
             <div class="dropup">
                 <button class="dropbtn">Dropup</button>
                 <div class="dropup-content">
@@ -99,11 +113,15 @@
                   <a class="characterSwitch"  id="michelle"> 3</a>
                 </div>
               </div>
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of 2a34ace (trying to fix load exception)
 =======
 >>>>>>> parent of 2a34ace (trying to fix load exception)
+=======
+            
+>>>>>>> parent of d2445d8 (implementation of character switch)
             <audio id="exerciseAudio" >
                 <source src="assets/audio/crossCrawling.m4a">
             </audio>
@@ -141,6 +159,7 @@
         console.log("pop up");
         activeCharacter =  $(this).attr('id');
         console.log(activeCharacter);
+<<<<<<< HEAD
 
         $("#animated-asset").attr("src","assets/"+activeCharacter);
 
@@ -166,9 +185,12 @@
         // $("#animated-asset").attr("src","assets/"+characterToActivate+".glb");
         // console.log($("#animated-asset"));
       
+=======
+>>>>>>> parent of d2445d8 (implementation of character switch)
 
+        $("#animated-asset").attr("src","assets/"+activeCharacter);
 
-       //console.log(jQuery.parseJSON(activeCharacter.toString())); 
+        console.log($("#animated-asset"));
 
         
 

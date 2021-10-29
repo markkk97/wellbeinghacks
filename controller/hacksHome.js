@@ -31,9 +31,9 @@ export var scene,
     //MODEL_PATH = '../model/character/bot4.glb',
     MODEL_PATH = '../model/character/michelle_home3.glb',
 
-    MODEL_PATH2 = '../model/character/listHacks.glb',
+    //MODEL_PATH2 = '../model/character/listHacks.glb',
    // MODEL_PATH2 = '../model/character/sophie3.glb',
-    //MODEL_PATH2 = '../model/character/bot4.glb',
+    MODEL_PATH2 = '../model/character/bot4.glb',
 
     //canvas
      canvas = document.querySelector('#c'),
@@ -743,6 +743,7 @@ export var scene,
         
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         try {
           character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
      
@@ -763,6 +764,11 @@ export var scene,
 =======
         character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
         audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
+=======
+        
+        character.setAttribute("animation-mixer", {clip: activeAnimationAR})     
+        audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a")
+>>>>>>> parent of d2445d8 (implementation of character switch)
         audio.play();
 >>>>>>> parent of 2a34ace (trying to fix load exception)
 
