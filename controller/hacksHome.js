@@ -743,10 +743,8 @@ export var scene,
         console.log(activeAnimationAR);
         
         try {
-          character.setAttribute("animation-mixer", {clip: activeAnimationAR});  
-          
-          
-          audio.load();
+          character.setAttribute("animation-mixer", {clip: activeAnimationAR});   
+     
           audio.setAttribute("src","./assets/audio/"+activeAnimationAR+".m4a");
      
           audio.play();

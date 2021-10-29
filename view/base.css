@@ -93,7 +93,7 @@ canvas{
 
  body{
   /* background-image: url(../model/pics/backgroundHome.png); */
-  background-color: #ffffff !important;
+  background-color: #F2F1E8 !important;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center; 
@@ -115,8 +115,8 @@ border: 2px solid rgb(255, 255, 255);
   font-family: 'Poppins', sans-serif, !important;
   font-size: 1.25rem;
   font-weight: 300;
-  background-color: #f5e774;
-  color: #000000 !important;
+  background-color: #5CA8B2;
+  color: #F2F1E8 !important;
   border-radius: 20px;
   text-align: center;
   text-decoration: none;
@@ -147,9 +147,9 @@ border: 2px solid rgb(255, 255, 255);
 
 
 .butt:hover{
-
+  color: #F2F1E8;
   text-decoration: none;
-  background: #fae43e;
+  background: #3d8b95;
   transform: translateX(8px);
   width: auto;
   -webkit-box-shadow: -1px 31px 15px -15px rgba(119,119,119,0.61); 
@@ -195,7 +195,7 @@ box-shadow: -1px 31px 15px -15px rgba(119,119,119,0.61);
 
 .filter-banner{
  
-  background-color: #ffffff;
+  background-color: #F2F1E8;
   padding: 20px;
   border-radius: 20px;
 }
